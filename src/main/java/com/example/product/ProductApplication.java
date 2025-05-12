@@ -27,16 +27,16 @@ public class ProductApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Product product1 = new Product("Product 1", "Description 1", BigDecimal.valueOf(100), 10);
-        // Product product2 = new Product("Product 2", "Description 2", BigDecimal.valueOf(200), 20);
+        Product product1 = new Product("Product 1", "Description 1", BigDecimal.valueOf(100), 10);
+        Product product2 = new Product("Product 2", "Description 2", BigDecimal.valueOf(200), 20);
 
-        // productService.addProduct(product1);
-        // productService.addProduct(product2);
+        productService.addProduct(product1);
+        productService.addProduct(product2);
 
-        // Sale sale1 = new Sale(product1.getId(), 2, LocalDate.now());
-        // Sale sale2 = new Sale(product2.getId(), 3, LocalDate.now());
+        Sale sale1 = new Sale(product1.getId(), 2, LocalDate.now());
+        Sale sale2 = new Sale(product2.getId(), 3, LocalDate.now());
 
-        // saleService.markSale(sale1);
-        // saleService.markSale(sale2);
+        saleService.markSale(sale1);
+        saleService.markSale(sale2);
     }
 }

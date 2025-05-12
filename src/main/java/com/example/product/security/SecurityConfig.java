@@ -25,12 +25,11 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 // Swagger endpoints: require authentication
                 .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").hasAnyRole("USER", "ADMIN")
-                // Product and Sales APIs: restrict to ADMIN
-                .requestMatchers("/api/products", "/api/products/**").hasRole("ADMIN")
-                .requestMatchers("/api/sales", "/api/sales/**").hasRole("ADMIN")
-                // Allow GET and POST APIs for public users
+                // API endpoints: restrict access based on roles
                 .requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers(HttpMethod.POST, "/api/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/**").hasRole("ADMIN")
                 // All other requests require authentication
                 .anyRequest().authenticated()
             )
